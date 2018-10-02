@@ -18,20 +18,20 @@ FROM snasello/docker-debian-java7:7u79
 MAINTAINER Samuel Nasello <samuel.nasello@elosi.com>
 
 # install liferay
-RUN curl -O -s -k -L -C - https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.2.2%20GA3/liferay-portal-tomcat-6.2-ce-ga3-20150103155803016.zip \
-	&& unzip liferay-portal-tomcat-6.2-ce-ga3-20150103155803016.zip -d /opt \
-	&& rm liferay-portal-tomcat-6.2-ce-ga3-20150103155803016.zip
+RUN curl -O -s -k -L -C - https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.2.3%20GA4/liferay-portal-tomcat-6.2-ce-ga4-20150416163831865.zip \
+	&& unzip liferay-portal-tomcat-6.2-ce-ga4-20150416163831865.zip -d /opt \
+	&& rm liferay-portal-tomcat-6.2-ce-ga4-20150416163831865.zip
 
 # add config for bdd
-RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-bd-${DB_TYPE}.properties"' >> /opt/liferay-portal-tomcat-6.2-ce-ga3/tomcat-7.0.42/bin/setenv.sh
+RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-bd-${DB_TYPE}.properties"' >> /opt/liferay-portal-tomcat-6.2-ce-ga4/tomcat-7.0.42/bin/setenv.sh
 
 # add configuration liferay file
-ADD lep/portal-bundle.properties /opt/liferay-portal-tomcat-6.2-ce-ga3/portal-bundle.properties
-ADD lep/portal-bd-MYSQL.properties /opt/liferay-portal-tomcat-6.2-ce-ga3/portal-bd-MYSQL.properties
-ADD lep/portal-bd-POSTGRESQL.properties /opt/liferay-portal-tomcat-6.2-ce-ga3/portal-bd-POSTGRESQL.properties
+ADD lep/portal-bundle.properties /opt/liferay-portal-tomcat-6.2-ce-ga4/portal-bundle.properties
+ADD lep/portal-bd-MYSQL.properties /opt/liferay-portal-tomcat-6.2-ce-ga4/portal-bd-MYSQL.properties
+ADD lep/portal-bd-POSTGRESQL.properties /opt/liferay-portal-tomcat-6.2-ce-ga4/portal-bd-POSTGRESQL.properties
 
 # volumes
-VOLUME ["/var/liferay-home", "/opt/liferay-portal-tomcat-6.2-ce-ga3/"]
+VOLUME ["/var/liferay-home", "/opt/liferay-portal-tomcat-6.2-ce-ga4/"]
 
 # Ports
 EXPOSE 8080
@@ -41,4 +41,4 @@ ENV JAVA_HOME /opt/java
 
 # EXEC
 CMD ["run"]
-ENTRYPOINT ["/opt/liferay-portal-tomcat-6.2-ce-ga3/tomcat-7.0.42/bin/catalina.sh"]
+ENTRYPOINT ["/opt/liferay-portal-tomcat-6.2-ce-ga4/tomcat-7.0.42/bin/catalina.sh"]
