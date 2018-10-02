@@ -18,7 +18,7 @@ FROM snasello/docker-debian-java7:7u79
 MAINTAINER Samuel Nasello <samuel.nasello@elosi.com>
 
 # install liferay
-RUN curl -O -s -k -L -C - http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.2.5%20GA6/liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip \
+RUN curl -O -s -k -L -C - https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.2.2%20GA3/liferay-portal-tomcat-6.2-ce-ga3-20150103155803016.zip \
 	&& unzip liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip -d /opt \
 	&& rm liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip
 
