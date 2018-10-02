@@ -23,7 +23,7 @@ RUN curl -O -s -k -L -C - https://sourceforge.net/projects/lportal/files/Liferay
 	&& rm liferay-portal-tomcat-6.2-ce-ga3-20150103155803016.zip
 
 # add config for bdd
-RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-bd-${DB_TYPE}.properties"' >> /opt/liferay-portal-tomcat-6.2-ce-ga3/tomcat-7.0.62/bin/setenv.sh
+RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-bd-${DB_TYPE}.properties"' >> /opt/liferay-portal-tomcat-6.2-ce-ga3/tomcat-7.0.42/bin/setenv.sh
 
 # add configuration liferay file
 ADD lep/portal-bundle.properties /opt/liferay-portal-tomcat-6.2-ce-ga3/portal-bundle.properties
@@ -41,4 +41,4 @@ ENV JAVA_HOME /opt/java
 
 # EXEC
 CMD ["run"]
-ENTRYPOINT ["/opt/liferay-portal-tomcat-6.2-ce-ga3/tomcat-7.0.62/bin/catalina.sh"]
+ENTRYPOINT ["/opt/liferay-portal-tomcat-6.2-ce-ga3/tomcat-7.0.42/bin/catalina.sh"]
